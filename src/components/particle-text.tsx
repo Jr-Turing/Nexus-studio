@@ -246,7 +246,7 @@ export function ParticleText({ text }: { text: string }) {
   return (
     <canvas
       ref={canvasRef}
-      className="h-[28vh] min-h-[120px] w-full max-w-6xl touch-none sm:h-[34vh] md:h-[42vh] lg:h-[46vh]"
+      className="h-[20vh] min-h-[110px] w-full max-w-6xl touch-none sm:h-[24vh] md:h-[28vh] lg:h-[28vh]"
       aria-label={text}
       role="img"
     />
