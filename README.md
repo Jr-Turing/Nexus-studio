@@ -10,11 +10,14 @@ Marketing site for NEXUS, a distributed technology studio. Rebuilt on **Next.js 
 - **next/font** — self-hosted Google fonts (DM Sans, Space Grotesk, IBM Plex Mono), no external font requests
 - **next/image** — optimized team photos
 
-Only 3 components are client-side (`"use client"`): the canvas particle hero, the hover-preview team list, and the contact form. Everything else — including all four routes — renders as a React Server Component, so almost no JavaScript ships for a first paint.
+Only the interactive components use client-side rendering: the site header, particle hero, contact form, and error boundary. The remaining sections render as React Server Components, keeping the initial page lightweight.
 
 ## Getting started
 
 ```bash
+bun install
+bun run dev
+
 npm install
 npm run dev
 ```
@@ -22,32 +25,47 @@ npm run dev
 Open http://localhost:3000.
 
 ## Scripts
+- `bun run dev` — start the dev server
+- `bun run build` — production build
+- `bun run start` — run the production build
+- `bun run lint` — lint with ESLint
 
-- `npm run dev` — start the dev server
-- `npm run build` — production build
-- `npm run start` — run the production build
-- `npm run lint` — lint with ESLint
 
 ## Project structure
 
 ```
-app/
-  layout.tsx        Root layout: fonts, header, footer, metadata
-  page.tsx           Home
-  about/page.tsx      About
-  services/page.tsx   Services
-  contact/page.tsx    Contact
-  not-found.tsx        404
-  error.tsx            Error boundary
-  globals.css          Theme tokens + Tailwind
-src/
-  components/         UI components (site header/footer, hero, pricing, etc.)
-  lib/utils.ts         cn() class helper
-public/
-  assets/              Team photos
+.
+├── app/                    Next.js App Router
+│   ├── error.tsx           Client-side error boundary
+│   ├── globals.css         Global styles and theme tokens
+│   ├── layout.tsx          Root layout, fonts, header, and footer
+│   ├── not-found.tsx       Branded 404 page
+│   └── page.tsx            Homepage and section composition
+├── public/
+│   ├── assets/             Team photos and static media
+│   └── robots.txt          Search crawler rules
+├── src/
+│   ├── components/
+│   │   ├── ui/
+│   │   │   └── button.tsx  Shared button component
+│   │   ├── about.tsx       About section
+│   │   ├── builders.tsx    Team builders section
+│   │   ├── contact-form.tsx Contact form
+│   │   ├── contact.tsx     Contact section
+│   │   ├── expertise.tsx   Expertise/services section
+│   │   ├── page-shell.tsx  Shared inner-page layout
+│   │   ├── particle-text.tsx Interactive hero typography
+│   │   ├── pricing.tsx     Pricing section
+│   │   ├── site-footer.tsx Site footer
+│   │   └── site-header.tsx Site navigation
+│   └── lib/
+│       └── utils.ts        Shared cn() class helper
+├── eslint.config.mjs       ESLint configuration
+├── next.config.ts          Next.js configuration
+├── package.json             Scripts and dependencies
+├── postcss.config.mjs      PostCSS configuration
+├── tsconfig.json            TypeScript configuration
+└── README.md                Project documentation
 ```
 
-## Notes on the rewrite
-
-This project previously ran on TanStack Start + TanStack Router with ~50 npm dependencies (a full shadcn/ui set, react-query, react-hook-form, zod, recharts, embla-carousel, etc.), of which only one (`Button`) was actually used in the app. The Next.js rewrite keeps the same design and behavior but trims the dependency list to what the app actually needs (~15 packages), which shrinks install size and the client JS bundle considerably.
-# Nexus-studio
+# Team Nexus
