@@ -17,9 +17,6 @@ Only the interactive components use client-side rendering: the site header, part
 ```bash
 bun install
 bun run dev
-
-npm install
-npm run dev
 ```
 
 Open http://localhost:3000.
@@ -29,7 +26,6 @@ Open http://localhost:3000.
 - `bun run build` — production build
 - `bun run start` — run the production build
 - `bun run lint` — lint with ESLint
-
 
 ## Project structure
 
