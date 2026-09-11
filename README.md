@@ -10,8 +10,6 @@ Marketing site for NEXUS, a distributed technology studio. Rebuilt on **Next.js 
 - **next/font** — self-hosted Google fonts (DM Sans, Space Grotesk, IBM Plex Mono), no external font requests
 - **next/image** — optimized team photos
 
-Only the interactive components use client-side rendering: the site header, particle hero, contact form, and error boundary. The remaining sections render as React Server Components, keeping the initial page lightweight.
-
 ## Getting started
 
 ```bash
