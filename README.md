@@ -1,14 +1,12 @@
-# NEXUS® Studio
+# NEXUS Studio
 
 Marketing site for NEXUS, a distributed technology studio. Rebuilt on **Next.js 15 (App Router)** and **TypeScript**.
 
 ## Stack
 
-- **Next.js 15** — App Router, React Server Components by default
+- **Next.js 15** 
 - **TypeScript**
 - **Tailwind CSS v4**
-- **next/font** — self-hosted Google fonts (DM Sans, Space Grotesk, IBM Plex Mono), no external font requests
-- **next/image** — optimized team photos
 
 ## Getting started
 
